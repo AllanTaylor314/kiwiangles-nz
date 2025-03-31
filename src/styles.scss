@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Harlow Solid Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Harlow Solid Italic'), url('HARLOWSI_1.woff') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  font-family: Montserrat, sans-serif;
+}
