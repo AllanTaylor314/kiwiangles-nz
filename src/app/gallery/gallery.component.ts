@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CollectionComponent } from "../collection/collection.component";
 
 @Component({
   selector: 'app-gallery',
-  imports: [],
+  imports: [CollectionComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })
