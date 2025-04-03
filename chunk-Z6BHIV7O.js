@@ -1,0 +1,1 @@
+import{Aa as o,La as t,Ma as a,Va as p}from"./chunk-ZSEHAT3N.js";var r=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=o({type:n,selectors:[["app-playground"]],decls:2,vars:0,template:function(e,i){e&1&&(t(0,"p"),p(1,"playground works!"),a())},encapsulation:2})};export{r as PlaygroundComponent};
