@@ -1,1 +1,6 @@
-<p>playground works!</p>
+<div>
+  <input type="text" [(ngModel)]="word" (ngModelChange)="onWordChange()" placeholder="Enter a word" />
+</div>
+<span *ngFor="let letter of letters">
+  <app-letter-switcher [letter]="letter"></app-letter-switcher>
+</span>

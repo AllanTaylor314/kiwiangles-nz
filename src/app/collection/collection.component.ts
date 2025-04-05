@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PhotoComponent } from "../photo/photo.component";
 import { LetterPhoto } from '../letter-photo';
@@ -11,9 +11,11 @@ import { LettersService } from '../letters.service';
   styleUrl: './collection.component.scss'
 })
 export class CollectionComponent {
-  letterPhotos: LetterPhoto[] = [];
+  @Input() letterPhotos?: LetterPhoto[];
   lettersService: LettersService = inject(LettersService);
   constructor() {
-    this.letterPhotos = this.lettersService.getLetters();
+    if (this.letterPhotos !== null) {
+      this.letterPhotos = this.lettersService.getLetters();
+    }
   }
 }
