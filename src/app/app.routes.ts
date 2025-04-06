@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from "./home/home.component";
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    title: 'Home',
+    redirectTo: '/about',
+    pathMatch: 'full',
   },
   {
     path: 'about',
@@ -19,7 +18,13 @@ export const routes: Routes = [
   },
   {
     path: 'playground',
-    loadComponent: () => import('./playground/playground.component').then(m => m.PlaygroundComponent),
     title: 'Make a word',
-  }
+    redirectTo: '/playground/',
+    pathMatch: 'full',
+  },
+  {
+    path: 'playground/:letterIds',
+    title: 'Make a word',
+    loadComponent: () => import('./playground/playground.component').then(m => m.PlaygroundComponent),
+  },
 ];

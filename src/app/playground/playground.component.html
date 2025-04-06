@@ -1,6 +1,6 @@
 <div>
   <input type="text" [(ngModel)]="word" (ngModelChange)="onWordChange()" placeholder="Enter a word" />
 </div>
-<span *ngFor="let letter of letters">
-  <app-letter-switcher [letter]="letter"></app-letter-switcher>
+<span *ngFor="let letter of letters; let index = index">
+  <app-letter-switcher [letter]="letter.letter" [(letterId)]="letter.id" (letterIdChange)="onLetterIdChange(index, $event)"></app-letter-switcher>
 </span>

@@ -12,5 +12,5 @@ import { routes } from './app.routes';
 export class AppComponent {
   activeRoute: ActivatedRoute = inject(ActivatedRoute);
   title = 'kiwiangles-nz';
-  navRoutes = routes
+  navRoutes = routes.filter(route => route.path === 'about' || route.path === 'gallery' || route.path === 'playground');
 }
