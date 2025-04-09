@@ -51,8 +51,7 @@ export class LetterSwitcherComponent {
   }
 
   letterIdChangeHandler(event: any) {
-    this.updateLetterId(event.target.value);
-    this.index = this.letterPhotos.findIndex(letterPhoto => letterPhoto.id === this.letterId);
+    this.index = this.letterPhotos.findIndex(letterPhoto => letterPhoto.id === event.target.value);
     if (this.index === -1) {
       this.index = 0;
     }

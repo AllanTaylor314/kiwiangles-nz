@@ -7,9 +7,14 @@
 </div>
 <nav>
   <ul>
-    <li *ngFor="let route of navRoutes">
-      <a [routerLink]="route.path" routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">{{route.title}}</a>
+    <li>
+      <a routerLink="/about" routerLinkActive="active">About Us</a>
+    </li>
+    <li>
+      <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
+    </li>
+    <li>
+      <a routerLink="/playground" routerLinkActive="active">Playground</a>
     </li>
   </ul>
 </nav>
