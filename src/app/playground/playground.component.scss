@@ -6,3 +6,29 @@ input {
   font-size: 16px;
   box-sizing: border-box;
 }
+
+.email-order {
+  padding: 10px 20px; /* Add padding to buttons */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px; /* Add margin to separate from other elements */
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  &:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  &:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add custom focus shadow */
+  }
+  &:active {
+    transform: scale(0.95); /* Slightly shrink button on click */
+  }
+  &:active:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Keep focus shadow on active */
+  }
+}

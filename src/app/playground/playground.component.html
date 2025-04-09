@@ -4,3 +4,6 @@
 <span *ngFor="let letter of letters; let index = index">
   <app-letter-switcher [letter]="letter.letter" [(letterId)]="letter.id" (letterIdChange)="onLetterIdChange(index, $event)"></app-letter-switcher>
 </span>
+<div *ngIf="letters.length > 0">
+  <a class="email-order" [href]="this.getEmailLink()" target="_blank" rel="noopener noreferrer">Order by email (${{this.getCost(this.letters.length).toFixed(2)}} + postage)</a>
+</div>

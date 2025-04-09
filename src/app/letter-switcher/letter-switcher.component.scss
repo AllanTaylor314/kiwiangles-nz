@@ -1,54 +1,50 @@
 .image-container {
   text-align: left; /* Align image to the left */
   display: inline-block; /* Allow the image to be inline with the buttons */
-}
-
-.image-container img {
-  display: block;
-  margin-bottom: 10px; /* Add spacing between the image and buttons */
+  img {
+    display: block;
+    margin-bottom: 10px; /* Add spacing between the image and buttons */
+  }
 }
 
 .button-row {
   display: flex;
   justify-content: center; /* Center buttons horizontally */
   gap: 5px; /* Add spacing between buttons */
-}
-.button-row button {
-  padding: 10px 20px; /* Add padding to buttons */
-  background-color: #007bff; /* Bootstrap primary color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: 'Courier New', Courier, monospace;
-}
-.button-row button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-.button-row button:disabled {
-  background-color: #6c757d; /* Bootstrap secondary color */
-  cursor: default;
-}
-.button-row button:disabled:hover {
-  background-color: #6c757d; /* Keep the same color on hover */
-}
-.button-row button:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add custom focus shadow */
-}
-.button-row button:active {
-  transform: scale(0.95); /* Slightly shrink button on click */
-}
-.button-row button:active:focus {
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Keep focus shadow on active */
-}
-.button-row button:disabled:active {
-  transform: none; /* Prevent shrinking on disabled button */
-}
-.button-row button:disabled:focus {
-  box-shadow: none; /* Remove focus shadow on disabled button */
-}
-.button-row button:disabled:hover {
-  background-color: #6c757d; /* Keep the same color on hover */
+  button {
+    padding: 10px 20px; /* Add padding to buttons */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Courier New', Courier, monospace;
+    &:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+    }
+    &:focus {
+      outline: none; /* Remove default focus outline */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add custom focus shadow */
+    }
+    &:active {
+      transform: scale(0.95); /* Slightly shrink button on click */
+    }
+    &:active:focus {
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Keep focus shadow on active */
+    }
+    &:disabled {
+      background-color: #6c757d; /* Bootstrap secondary color */
+      cursor: default;
+      &:hover {
+        background-color: #6c757d; /* Keep the same color on hover */
+      }
+      &:active {
+        transform: none; /* Prevent shrinking on disabled button */
+      }
+      &:focus {
+        box-shadow: none; /* Remove focus shadow on disabled button */
+      }
+    }
+  }
 }

@@ -73,4 +73,32 @@ export class PlaygroundComponent {
       .replace(/:letterIds/, this.letters.map(l => l.id).join('-'));
     this.location.replaceState(newUrl);
   }
+
+  getCost(numLetters: number): number {
+    if (numLetters <= 0) {
+      return 0;
+    } else if (numLetters <= 6) {
+      return 3 * numLetters;
+    } else {
+      return 2 * numLetters + 6;
+    }
+  }
+
+  getEmailLink() {
+    const subject = 'KiwiAngles NZ - Order form';
+    const postage = 3.60;
+    const body = `Name:
+Postal Address:
+
+Letters: ${this.letters.map(l => l.id).join('-')}
+
+Subtotal: $${this.getCost(this.letters.length).toFixed(2)} (${this.letters.length} letters)
+Postage: $${postage.toFixed(2)}
+Total: ${(postage + this.getCost(this.letters.length)).toFixed(2)}
+
+Payment details will be sent to you once the order is confirmed.
+Payment can be made by bank transfer.
+`;
+    return `mailto:kiwi.angles.nz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
 }
