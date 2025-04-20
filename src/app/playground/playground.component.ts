@@ -21,6 +21,10 @@ export class PlaygroundComponent {
   location: Location = inject(Location);
   word: string = '';
   letters: LetterWithInitialId[] = [];
+  postage = 3.60;
+  showMessageBody = false;
+  emailAddress = "kiwi.angles.nz@gmail.com";
+  copySuccess = false;
 
   ngOnInit() {
     let letterIds: string[] = this.route.snapshot.params['letterIds'] || [];
@@ -84,21 +88,36 @@ export class PlaygroundComponent {
     }
   }
 
-  getEmailLink() {
-    const subject = 'KiwiAngles NZ - Order form';
-    const postage = 3.60;
-    const body = `Name:
+  getMessageBody(): string {
+    return `Name:
 Postal Address:
 
 Letters: ${this.letters.map(l => l.id).join('-')}
 
 Subtotal: $${this.getCost(this.letters.length).toFixed(2)} (${this.letters.length} letters)
-Postage: $${postage.toFixed(2)}
-Total: ${(postage + this.getCost(this.letters.length)).toFixed(2)}
+Postage: $${this.postage.toFixed(2)}
+Total: ${(this.postage + this.getCost(this.letters.length)).toFixed(2)}
 
 Payment details will be sent to you once the order is confirmed.
 Payment can be made by bank transfer.
-`;
-    return `mailto:kiwi.angles.nz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    `;
+  }
+
+  getEmailLink() {
+    const subject = 'KiwiAngles NZ - Order form';
+    return `mailto:${this.emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(this.getMessageBody())}`;
+  }
+
+  copyToClipboard() {
+    navigator.clipboard.writeText(this.getMessageBody()).then(
+      () => {
+        this.copySuccess = true;
+        console.log('clipboard successfully set');
+      },
+      () => {
+        this.showMessageBody = true;
+        console.error('clipboard write failed');
+      }
+    );
   }
 }

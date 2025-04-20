@@ -5,5 +5,13 @@
   <app-letter-switcher [letter]="letter.letter" [(letterId)]="letter.id" (letterIdChange)="onLetterIdChange(index, $event)"></app-letter-switcher>
 </span>
 <div *ngIf="letters.length > 0">
-  <a class="email-order" [href]="this.getEmailLink()" target="_blank" rel="noopener noreferrer">Order by email (${{this.getCost(this.letters.length).toFixed(2)}} + postage)</a>
+  <a class="email-order" [href]="this.getEmailLink()" target="_blank" rel="noopener noreferrer">Order by email (${{this.getCost(this.letters.length).toFixed(2)}} + ${{this.postage.toFixed(2)}} postage)</a>
+  <button class="email-order" id="email-copy" (click)="copyToClipboard()">Copy order message clipboard</button>
+  <div class="order-message" *ngIf="copySuccess">
+    <p>Order message copied to clipboard. Now email it to {{this.emailAddress}}</p>
+  </div>
+  <div class="order-message" *ngIf="showMessageBody">
+    <p>Failed to copy order message. Please copy it manually and send it to {{this.emailAddress}}</p>
+    <textarea [value]="this.getMessageBody()" readonly onClick="this.select()"></textarea>
+  </div>
 </div>
