@@ -8,6 +8,7 @@ from thumbnail import to_thumbnail
 from watermark import add_watermark
 
 ASSETS = Path(__file__).resolve().parent.parent / "public" / "assets"
+INPUTS = Path(__file__).resolve().parent.parent / "private"
 
 THUMBNAILS = ASSETS / "thumbnail"
 WATERMARKS = ASSETS / "watermark"
@@ -15,7 +16,7 @@ WATERMARKS = ASSETS / "watermark"
 THUMBNAILS.mkdir(parents=True, exist_ok=True)
 WATERMARKS.mkdir(parents=True, exist_ok=True)
 
-MAPPING = Path("mapping.txt")
+MAPPING = INPUTS / "mapping.txt"
 
 hash_lookup = {}
 free_ids = {c:0 for c in ascii_uppercase}
@@ -27,7 +28,7 @@ with open(MAPPING, encoding="utf8") as f:
         hash_lookup[file_hash] = (file_name, unique_id)
         free_ids[file_name[0]] = max(free_ids[file_name[0]], int(unique_id[1:]) + 1)
 
-files = list(Path(".").glob("**/*.jpg"))
+files = list(INPUTS.glob("*.jpg"))
 
 for file in files:
     with open(file, "rb") as f:
