@@ -28,7 +28,7 @@ with open(MAPPING, encoding="utf8") as f:
         hash_lookup[file_hash] = (file_name, unique_id)
         free_ids[file_name[0]] = max(free_ids[file_name[0]], int(unique_id[1:]) + 1)
 
-files = list(INPUTS.glob("*.jpg"))
+files = list(INPUTS.glob("*.jpg")) + list(INPUTS.glob("*.png"))
 
 for file in files:
     with open(file, "rb") as f:

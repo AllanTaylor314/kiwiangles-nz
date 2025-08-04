@@ -43,3 +43,7 @@ Thumbs.db
 
 # Ignore pycache files
 *.py[cod]
+
+!private/mapping.txt
+private
+public/assets
